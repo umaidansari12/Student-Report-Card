@@ -135,9 +135,6 @@ class Student{
                 subject[j]=scanner.next();
                 marks[j]=scanner.nextDouble();
             }
-            System.out.println(name);
-            name = convertTitleCase(name);
-            System.out.println(name);
             Student ob=new Student(name,phoneNumber,subject,marks);
             ob.printReport();
         }
