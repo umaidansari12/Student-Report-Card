@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
 
 class Student{
     private String Name;
@@ -91,9 +93,15 @@ class Student{
         for(int i=0;i<Marks.length;i++){
             System.out.println((i+1)+" - "+SubjectName[i]+" : "+Marks[i]);
         }
-        System.out.println("\nTotal Marks : "+getTotalMarks());
-        System.out.println("Percentage : "+getPercentage());
+        System.out.println("\nTotal Marks : "+getTotalMarks()+" Out Of "+Total);
+        System.out.print("Percentage : ");
+        System.out.printf("%.2f",getPercentage());
+        System.out.println(" %");
         System.out.println("Grade : "+getGrade());
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
+        LocalDateTime now = LocalDateTime.now();  
+        System.out.println("-----------------------------------------------------");  
+        System.out.println("           Generated On : "+dtf.format(now));
         System.out.println("-----------------------------------------------------");
     }
     public static String convertTitleCase(String input){
@@ -135,6 +143,7 @@ class Student{
                 subject[j]=scanner.next();
                 marks[j]=scanner.nextDouble();
             }
+            name = convertTitleCase(name);
             Student ob=new Student(name,phoneNumber,subject,marks);
             ob.printReport();
         }
